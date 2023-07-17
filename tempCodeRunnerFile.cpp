@@ -4,14 +4,20 @@ using namespace std;
 
 int main(){
   int n;
-  cin>>n;
   int sum=0;
   int i=1;
-  while(i<=n){
-    sum+=i;
-    i=i+1;
+  cout<<"Enter a number"<<endl;
+  cin>>n;
+  while(i>=n){
+    if(i%2==0){
+      sum=sum+i;
+    }
+    else{
+      continue;
+    }
+    i+=1;
   }
-  cout<<"Value of sum is "<<sum<<endl;
+  cout<<"Sum of even number are"<<sum<<endl;
 }
 
  
