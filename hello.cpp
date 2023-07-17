@@ -3,20 +3,19 @@
 using namespace std;
 
 int main(){
-  int n;
-  cin>>n;
-  int i=2;
-  while(i<n){
-    if (n%i==0)
-    {
-      cout<<"Not prime for "<<i<<endl;
+   int n;
+   cin>>n;
+   int i=1;
+
+   while(i<=n){
+    int j=1;
+    while(j<=n){
+      cout<<'*';
+      j=j+1;
     }
-    else{
-      cout<<"Prime for "<< i <<endl;
-    }
+    cout<<endl;
     i=i+1;
-    
-  }
+   }
 }
 
  
