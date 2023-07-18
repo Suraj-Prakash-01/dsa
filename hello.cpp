@@ -7,16 +7,25 @@ int main(){
   cin>>n;
   int i=1;
   while(i<=n){
+    // Print space
+    int space=n-i;
+
+    while(space){
+      cout<<" ";
+      space=space-1;
+    }
+
+    // Printing asterisk
     int j=1;
     while(j<=i){
-      cout<<char('A' + n-i+j-1);
+      cout<<"*";
       j+=1;
 
     }
     cout<<endl;
     i+=1;
-
   }
 
 }
 
+ 
