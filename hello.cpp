@@ -9,11 +9,11 @@ int main(){
    while(i<=n){
     int j=1;
     while(j<=n){
-      cout<<n-j+1;
-      j+=1;
+      cout<<j+3*(i-1);
+      j=j+1;
     }
     cout<<endl;
-    i+=1;
+    i=i+1;
    }
 }
 
