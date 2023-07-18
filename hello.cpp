@@ -5,27 +5,34 @@ using namespace std;
 int main(){
   int n;
   cin>>n;
-  int i=1;
-  while(i<=n){
-    // Print space
-    int space=n-i;
+  int row=1;
 
+  while(row<=n){
+    // Printing spaces
+    int space=n-row;
     while(space){
       cout<<" ";
       space=space-1;
     }
 
-    // Printing asterisk
-    int j=1;
-    while(j<=i){
-      cout<<"*";
-      j+=1;
+    // Printing 1st pattern
 
+    int j=1;
+    while(j<=row){
+      cout<<j;
+      j=j+1;
+    }
+
+    // Printing 2nd pattern
+
+    int start=row-1;
+    while(start){
+      cout<<start;
+      start=start-1;
     }
     cout<<endl;
-    i+=1;
+    row=row+1;
   }
-
 }
 
  
