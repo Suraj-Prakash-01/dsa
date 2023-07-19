@@ -4,35 +4,18 @@ using namespace std;
 
 int main(){
   int n;
+  cout<<" Enter the value of n " <<endl;
   cin>>n;
-  int row=1;
 
-  while(row<=n){
-    // Printing spaces
-    int space=n-row;
-    while(space){
-      cout<<" ";
-      space=space-1;
+  cout<< " Printing count form 1 to 10 "<<endl;
+  int i=1;
+  for(;;){
+    if(i<=n){
+      cout<<i<<endl;
     }
-
-    // Printing 1st pattern
-
-    int j=1;
-    while(j<=row){
-      cout<<j;
-      j=j+1;
+    else{
+      break;
     }
-
-    // Printing 2nd pattern
-
-    int start=row-1;
-    while(start){
-      cout<<start;
-      start=start-1;
-    }
-    cout<<endl;
-    row=row+1;
+    i++;
   }
 }
-
- 
