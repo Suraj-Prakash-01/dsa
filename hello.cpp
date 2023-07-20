@@ -3,25 +3,16 @@
 using namespace std;
 
 int main(){
-  int n;
-  cout<<" Enter the value of n"<<endl;
-  cin>>n;
+  int p=1;
+  int sum=0;
 
-  bool isPrime=1;
-
-  for(int i=2;i<n;i++){
-    if(n%i==0){
-      
-      isPrime=0;
-      break;
-    }
-    
+  while(n!=0){
+    int rem=n%10;
+    p*=rem;
+    sum=sum+rem;
+    n=n/10;
   }
-  if(isPrime==0){
-    cout<<" Not a prime Number"<<endl;
-  }
-  else{
-    cout<<" Prime number"<<endl;
-  }
+  int answer=p-sum;
+  return answer;
 }
 
