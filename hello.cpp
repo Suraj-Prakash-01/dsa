@@ -7,9 +7,15 @@ int main(){
   cout<<" Enter the value of n"<<endl;
   cin>>n;
 
-  int sum=0;
-  for(int i=1;i<=n;i++){
-    sum+=i;
+  int a=0;
+  int b=1;
+  cout<<a<<" "<<endl;
+  cout<<b<<" "<<endl;
+  for(int i=1; i<=n;i++){
+    int nxt=a+b;
+    cout<<nxt<<endl;
+    a=b;
+    b=nxt;
+
   }
-  cout<<sum<<endl;
 }
