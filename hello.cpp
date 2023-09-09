@@ -1,19 +1,25 @@
 #include <iostream>
-#include <cmath>
+
+bool isEven(int a)
+{
+  if (a & 1)
+  {
+    return 0;
+  }
+  return 1;
+}
 
 int main()
 {
-  int n;
-  std::cin >> n;
-  int bit;
-  int ans = 0;
-  int i = 0;
-  while (n != 0)
+  int num;
+  std::cin >> num;
+
+  if (isEven(num))
   {
-    bit = n & 1;
-    n = n >> 1;
-    ans = (bit * pow(10, i)) + ans;
-    i++;
+    std::cout << "Num is even" << std::endl;
   }
-  std::cout << ans;
+  else
+  {
+    std::cout << "Num is odd" << std::endl;
+  }
 }
