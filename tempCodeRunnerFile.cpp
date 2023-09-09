@@ -1,23 +1,19 @@
 #include <iostream>
+#include <cmath>
 
-using namespace std;
-
-int main(){
+int main()
+{
   int n;
-  int sum=0;
-  int i=1;
-  cout<<"Enter a number"<<endl;
-  cin>>n;
-  while(i>=n){
-    if(i%2==0){
-      sum=sum+i;
-    }
-    else{
-      continue;
-    }
-    i+=1;
+  std::cin >> n;
+  int bit;
+  int ans = 0;
+  int i = 0;
+  while (n != 0)
+  {
+    bit = n & 1;
+    n = n >> 1;
+    ans = (bit * pow(10, i)) + ans;
+    i++;
   }
-  cout<<"Sum of even number are"<<sum<<endl;
+  std::cout << ans;
 }
-
- 
