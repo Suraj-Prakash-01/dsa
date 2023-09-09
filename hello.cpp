@@ -1,26 +1,28 @@
 #include <iostream>
 
-int fact(int a)
+bool isPrime(int n)
 {
-  int f = 1;
-  while (a > 0)
+  for (int i = 2; i < n; i++)
   {
-    f = f * a;
-    a--;
+    if (n % i == 0)
+    {
+      return 0;
+    }
   }
-  return f;
-}
-
-int nCr(int n, int r)
-{
-  int c = fact(n) / (fact(r) * fact(n - r));
-  return c;
+  return 1;
 }
 
 int main()
 {
-  int n, r;
-  std::cin >> n >> r;
+  int n;
+  std::cin >> n;
 
-  std::cout << "The combination is " << nCr(n, r) << std::endl;
+  if (isPrime(n))
+  {
+    std::cout << n << " is a prime number";
+  }
+  else
+  {
+    std::cout << n << " is not a prime number";
+  }
 }
