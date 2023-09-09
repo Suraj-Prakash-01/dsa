@@ -1,25 +1,26 @@
 #include <iostream>
 
-bool isEven(int a)
+int fact(int a)
 {
-  if (a & 1)
+  int f = 1;
+  while (a > 0)
   {
-    return 0;
+    f = f * a;
+    a--;
   }
-  return 1;
+  return f;
+}
+
+int nCr(int n, int r)
+{
+  int c = fact(n) / (fact(r) * fact(n - r));
+  return c;
 }
 
 int main()
 {
-  int num;
-  std::cin >> num;
+  int n, r;
+  std::cin >> n >> r;
 
-  if (isEven(num))
-  {
-    std::cout << "Num is even" << std::endl;
-  }
-  else
-  {
-    std::cout << "Num is odd" << std::endl;
-  }
+  std::cout << "The combination is " << nCr(n, r) << std::endl;
 }
