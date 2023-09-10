@@ -1,31 +1,35 @@
 #include <iostream>
+#include <algorithm>
 
-bool search(int arr[], int size, int key)
+void reverse(int arr[], int n)
 {
-  for (int i = 0; i < size; i++)
+  int start = 0;
+  int end = n - 1;
+  while (start <= end)
   {
-    if (arr[i] == key)
-    {
-      return 1;
-    }
+    std::swap(arr[start], arr[end]);
+    start++;
+    end--;
   }
-  return 0;
+}
+
+void printArray(int arr[], int n)
+{
+  for (int i = 0; i < n; i++)
+  {
+    std::cout << arr[i] << " ";
+  }
+  std::cout << std::endl;
 }
 
 int main()
 {
-  int arr[10] = {5, 7, -2, 10, 22, -2, 0, 5, 22, 1};
-  int key;
-  std::cin >> key;
+  int arr[6] = {1, 54, 98, -23, -43, 45};
+  int brr[5] = {1, 2, 3, 4, 5};
 
-  bool found = search(arr, 10, key);
+  reverse(arr, 6);
+  reverse(brr, 5);
 
-  if (found)
-  {
-    std::cout << "Key is present" << std::endl;
-  }
-  else
-  {
-    std::cout << "Key not found" << std::endl;
-  }
+  printArray(arr, 6);
+  printArray(brr, 5);
 }
