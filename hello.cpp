@@ -1,15 +1,14 @@
 #include <iostream>
 #include <algorithm>
 
-void reverse(int arr[], int n)
+void swapAlternate(int arr[], int n)
 {
-  int start = 0;
-  int end = n - 1;
-  while (start <= end)
+  for (int i = 0; i < n; i += 2)
   {
-    std::swap(arr[start], arr[end]);
-    start++;
-    end--;
+    if (i + 1 < n)
+    {
+      std::swap(arr[i], arr[i + 1]);
+    }
   }
 }
 
@@ -27,8 +26,8 @@ int main()
   int arr[6] = {1, 54, 98, -23, -43, 45};
   int brr[5] = {1, 2, 3, 4, 5};
 
-  reverse(arr, 6);
-  reverse(brr, 5);
+  swapAlternate(arr, 6);
+  swapAlternate(brr, 5);
 
   printArray(arr, 6);
   printArray(brr, 5);
