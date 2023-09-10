@@ -1,14 +1,24 @@
 #include <iostream>
 
-int AP(int n)
+int setbit(int n)
 {
-  return (3 * n + 7);
+  int count = 0;
+  while (n != 0)
+  {
+    if (n & 1)
+    {
+      count++;
+    }
+    n = n >> 1;
+  }
+  return count;
 }
 
 int main()
 {
-  int n;
-  std::cin >> n;
+  int a, b;
+  std::cin >> a >> b;
 
-  std::cout << "The n'th term of the AP is " << AP(n) << std::endl;
+  int bit_count = setbit(a) + setbit(b);
+  std::cout << "The total count of setbit is " << bit_count << std::endl;
 }
