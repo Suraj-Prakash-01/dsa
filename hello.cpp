@@ -1,47 +1,22 @@
 #include <iostream>
-#include <limits.h> // Holds INT_MAX  and INT-MIN
-
-int getMin(int num[], int n)
-{
-  int min = INT_MAX;
-
-  for (int i = 0; i < n; i++)
-  {
-    if (num[i] < min)
-    {
-      min = num[i];
-    }
-  }
-  return min;
-}
-
-int getMax(int num[], int n)
-{
-  int max = INT_MIN; // Used to choose first item in the array as max value
-
-  for (int i = 0; i < n; i++)
-  {
-    if (num[i] > max) // First value becomes the max value
-    {
-      max = num[i];
-    }
-  }
-  return max;
-}
+#include <limits.h>
+#include <algorithm>
 
 int main()
 {
-  int size;
-  std::cin >> size;
+  int arr[5];
+  int mini = INT_MAX;
+  int size = sizeof(arr) / sizeof(int);
 
-  int num[100];
-
-  // Taking input in array
+  std::cout << "size of array is " << size << std::endl;
   for (int i = 0; i < size; i++)
   {
-    std::cin >> num[i];
+    std::cin >> arr[i];
   }
 
-  std::cout << "Maximum value is " << getMax(num, size) << std::endl;
-  std::cout << "Minimum value is " << getMin(num, size) << std::endl;
+  for (int j = 0; j < size; j++)
+  {
+    mini = std::min(mini, arr[j]);
+  }
+  std::cout << "The minimum value is " << mini;
 }
