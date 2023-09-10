@@ -2,5 +2,8 @@
 
 int main()
 {
-  int num = 2;
+  int arr[10];
+  int size = sizeof(arr) / sizeof(int);
+
+  std::cout << "size of array is " << size << std::endl;
 }
