@@ -1,14 +1,37 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+
+int binarySearch(int arr[], int size, int key)
+{
+  int start = 0;
+  int end = size - 1;
+
+  int mid = (start + end) / 2;
+
+  while (start <= end)
+  {
+    if (arr[mid] == key)
+      return mid;
+
+    // If key is greater than mid value
+    else if (key > arr[mid])
+      start = mid + 1;
+
+    // If the key is smaller than mid value
+    else
+    {
+      end = mid - 1;
+    }
+    mid = (start + end) / 2;
+  }
+  return -1;
+}
 
 int main()
 {
-  std::vector<int> arr = {2, 5, 3, 8, 6, 9, 1, 3, 6};
+  int arr[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+  int key;
+  std::cin >> key;
 
-  std::sort(arr.rbegin(), arr.rend());
-  for (int i = 0; i < arr.size(); i++)
-  {
-    std::cout << " " << arr[i];
-  }
+  int index = binarySearch(arr, 9, key);
+  std::cout << "The key is present at index " << index << std::endl;
 }
