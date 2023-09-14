@@ -1,11 +1,25 @@
-#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
 
 int main()
 {
-  int a = 5;
-  int b = 8;
+  // Get the vector
+  vector<int> a = {1, 45, 54, 71, 76, 12};
 
-  std::swap(a, b);
+  // Print the vector
+  cout << "Vector: ";
+  for (int i = 0; i < a.size(); i++)
+    cout << a[i] << " ";
+  cout << endl;
 
-  std::cout << a << " " << b << std::endl;
+  // Sort the vector in descending order
+  sort(a.begin(), a.end(), greater<int>());
+
+  // Print the reversed vector
+  cout << "Sorted Vector in descending order:\n";
+  for (int i = 0; i < a.size(); i++)
+    cout << a[i] << " ";
+  cout << endl;
+
+  return 0;
 }

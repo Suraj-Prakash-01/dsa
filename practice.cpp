@@ -1,16 +1,22 @@
-#include <iostream>
+int i = 0, j = 0;
+vector<int> ans;
 
-int main()
+while (i < n && j < m)
 {
-  int n;
-  std::cin >> n;
-  int bit;
-  int rev;
-
-  while (n != 0)
+  if (arr1[i] == arr2[j])
   {
-    bit = n & 1;
-    n = n >> 1;
+    ans.push_back(arr[i]);
+    i++;
+    j++;
   }
-  std::cout << bit;
+  else if (arr1[i] < arr2[j])
+  {
+    i++;
+  }
+  else
+  {
+    j++;
+  }
+
+  return ans;
 }
