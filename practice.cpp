@@ -1,22 +1,16 @@
-int i = 0, j = 0;
-vector<int> ans;
+#include <iostream>
 
-while (i < n && j < m)
+int main()
 {
-  if (arr1[i] == arr2[j])
-  {
-    ans.push_back(arr[i]);
-    i++;
-    j++;
-  }
-  else if (arr1[i] < arr2[j])
-  {
-    i++;
-  }
-  else
-  {
-    j++;
-  }
+  double number;
+  int n;
+  std::cout << " The number of decimals required" << std::endl;
+  std::cin >> n;
+  int x = number;
 
-  return ans;
+  double step = 0.1;
+  for (int i = 0, i < n; i++)
+  {
+    while (number)
+  }
 }
