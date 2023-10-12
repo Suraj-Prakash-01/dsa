@@ -1,34 +1,38 @@
 #include <iostream>
 
-int binarySearch(int arr[], int low, int high, int key)
+int binarySearch(int arr[], int n, int x)
 {
+  // To find the lower bound in the Binary Search
 
-  // Below formula can be used when the start+end>INT_MAX
-  // int mid=start + (end-start)/2;
+  int low = 0, high = n - 1;
+  int ans = n; // This ans variable will return the lower bound
 
-  // This checks the basic condition of Binary Search
-  if (low > high)
-    return -1;
+  while (low <= high)
+  {
+    int mid = (low + high) / 2;
 
-  int mid = (low + high) / 2;
+    // Maybe an answer
+    if (arr[mid] >= x)
+    {
+      ans = mid;
+      // Looking for more small index on left
+      high = mid - 1;
+    }
 
-  if (arr[mid] == key)
-    return mid;
-
-  // The argument present in the return makes it recursive since it goes on
-  // until we find the key element user has asked for
-  else if (key > arr[mid])
-    return binarySearch(arr, mid + 1, high, key);
-
-  return binarySearch(arr, low, high - 1, key);
+    else
+    {
+      low = mid + 1; // Looking in right part
+    }
+  }
+  return ans;
 }
 
 int main()
 {
-  int arr[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-  int key;
-  std::cin >> key;
+  int arr[9] = {1, 4, 9, 12, 34, 45, 68, 84, 99};
+  int x;
+  std::cin >> x;
 
-  int index = binarySearch(arr, 0, 8, key);
-  std::cout << "The key is present at index " << index << std::endl;
+  int index = binarySearch(arr, 9, x);
+  std::cout << "The lower bound of the array is" << index << std::endl;
 }
