@@ -1,31 +1,26 @@
 #include <iostream>
 
-int binarySearch(int arr[], int size, int key)
+int binarySearch(int arr[], int low, int high, int key)
 {
-  int start = 0;
-  int end = size - 1;
 
   // Below formula can be used when the start+end>INT_MAX
   // int mid=start + (end-start)/2;
-  int mid = (start + end) / 2;
 
-  while (start <= end)
-  {
-    if (arr[mid] == key)
-      return mid;
+  // This checks the basic condition of Binary Search
+  if (low > high)
+    return -1;
 
-    // If key is greater than mid value
-    else if (key > arr[mid])
-      start = mid + 1;
+  int mid = (low + high) / 2;
 
-    // If the key is smaller than mid value
-    else
-    {
-      end = mid - 1;
-    }
-    mid = (start + end) / 2;
-  }
-  return -1;
+  if (arr[mid] == key)
+    return mid;
+
+  // The argument present in the return makes it recursive since it goes on
+  // until we find the key element user has asked for
+  else if (key > arr[mid])
+    return binarySearch(arr, mid + 1, high, key);
+
+  return binarySearch(arr, low, high - 1, key);
 }
 
 int main()
@@ -34,6 +29,6 @@ int main()
   int key;
   std::cin >> key;
 
-  int index = binarySearch(arr, 9, key);
+  int index = binarySearch(arr, 0, 8, key);
   std::cout << "The key is present at index " << index << std::endl;
 }
