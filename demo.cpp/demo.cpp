@@ -1,8 +1,8 @@
 #include <iostream>
 
-int Floor(int arr[], int n, int x)
+int Ceil(int arr[], int n, int x)
 {
-  // To find the floor of the sorted array
+  // To find the ceil of the sorted array
   int low = 0, high = n - 1;
   int ans;
 
@@ -10,14 +10,14 @@ int Floor(int arr[], int n, int x)
   {
     int mid = (low + high) / 2;
 
-    if (arr[mid] <= x)
+    if (arr[mid] >= x)
     {
       ans = arr[mid];
-      low = mid + 1; // To keep looking furthur for floor value
+      high = mid - 1; // To keep looking furthur for ceil value
     }
 
     else
-      high = mid - 1;
+      low = mid + 1;
   }
   return ans;
 }
@@ -28,6 +28,6 @@ int main()
   int x;
   std::cin >> x;
 
-  int value = Floor(arr, 9, x);
-  std::cout << "The floor of the sorted array is" << value << std::endl;
+  int value = Ceil(arr, 9, x);
+  std::cout << "The ceil of the sorted array is" << value << std::endl;
 }
