@@ -1,28 +1,23 @@
 #include <iostream>
 
-int binarySearch(int arr[], int n, int x)
+int Floor(int arr[], int n, int x)
 {
-  // To find the upper bound in the Binary Search
-
+  // To find the floor of the sorted array
   int low = 0, high = n - 1;
-  int ans = n; // This ans variable will return the upper bound
+  int ans;
 
   while (low <= high)
   {
     int mid = (low + high) / 2;
 
-    // Maybe an answer
-    if (arr[mid] > x)
+    if (arr[mid] <= x)
     {
-      ans = mid;
-      // Looking for more small index on left
-      high = mid - 1;
+      ans = arr[mid];
+      low = mid + 1; // To keep looking furthur for floor value
     }
 
     else
-    {
-      low = mid + 1; // Looking in right part
-    }
+      high = mid - 1;
   }
   return ans;
 }
@@ -33,6 +28,6 @@ int main()
   int x;
   std::cin >> x;
 
-  int index = binarySearch(arr, 9, x);
-  std::cout << "The upper bound of the array is" << index << std::endl;
+  int value = Floor(arr, 9, x);
+  std::cout << "The floor of the sorted array is" << value << std::endl;
 }
