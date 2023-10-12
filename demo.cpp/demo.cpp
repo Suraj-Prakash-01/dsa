@@ -2,17 +2,17 @@
 
 int binarySearch(int arr[], int n, int x)
 {
-  // To find the lower bound in the Binary Search
+  // To find the upper bound in the Binary Search
 
   int low = 0, high = n - 1;
-  int ans = n; // This ans variable will return the lower bound
+  int ans = n; // This ans variable will return the upper bound
 
   while (low <= high)
   {
     int mid = (low + high) / 2;
 
     // Maybe an answer
-    if (arr[mid] >= x)
+    if (arr[mid] > x)
     {
       ans = mid;
       // Looking for more small index on left
@@ -34,5 +34,5 @@ int main()
   std::cin >> x;
 
   int index = binarySearch(arr, 9, x);
-  std::cout << "The lower bound of the array is" << index << std::endl;
+  std::cout << "The upper bound of the array is" << index << std::endl;
 }
