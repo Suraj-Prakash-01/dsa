@@ -1,33 +1,54 @@
 #include <iostream>
 
-int Ceil(int arr[], int n, int x)
+int ReverseSorted(int arr[], int n, int k)
 {
-  // To find the ceil of the sorted array
-  int low = 0, high = n - 1;
-  int ans;
+  // To find the target element in the reverse sorted array
+  int low = 0;
+  int high = n - 1;
 
   while (low <= high)
   {
     int mid = (low + high) / 2;
 
-    if (arr[mid] >= x)
+    if (arr[mid] == k)
+      return mid;
+
+    // If the left part of the array is sorted
+    else if (arr[low] <= arr[mid])
     {
-      ans = arr[mid];
-      high = mid - 1; // To keep looking furthur for ceil value
+      if (arr[low] <= k && k <= arr[mid])
+      {
+        high = mid - 1;
+      }
+      else
+      {
+        low = mid + 1;
+      }
     }
 
+    // If the right part of the array is sorted
     else
-      low = mid + 1;
+    {
+      if (arr[mid] <= k && k <= arr[high])
+      {
+        low = mid + 1;
+      }
+      else
+      {
+        high = mid - 1;
+      }
+    }
   }
-  return ans;
+  return -1;
 }
 
 int main()
 {
-  int arr[9] = {1, 4, 9, 12, 34, 45, 68, 84, 99};
-  int x;
-  std::cin >> x;
+  // A reversed Sorted array
+  int arr[9] = {5, 6, 7, 8, 0, 1, 2, 3, 4};
+  int k;
+  std::cin >> k;
 
-  int value = Ceil(arr, 9, x);
-  std::cout << "The ceil of the sorted array is" << value << std::endl;
+  int value = ReverseSorted(arr, 9, k);
+  std::cout << "The target element is present at the index " << value << std::endl;
 }
