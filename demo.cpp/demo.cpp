@@ -3,6 +3,7 @@
 int ReverseSorted(int arr[], int n, int k)
 {
   // To find the target element in the reverse sorted array
+  // that contains the duplicate elements as well
   int low = 0;
   int high = n - 1;
 
@@ -12,6 +13,13 @@ int ReverseSorted(int arr[], int n, int k)
 
     if (arr[mid] == k)
       return mid;
+
+    else if (arr[low] == mid && arr[mid] == arr[high])
+    {
+      low = low + 1;
+      high = high - 1;
+      continue;
+    }
 
     // If the left part of the array is sorted
     else if (arr[low] <= arr[mid])
@@ -44,11 +52,11 @@ int ReverseSorted(int arr[], int n, int k)
 
 int main()
 {
-  // A reversed Sorted array
-  int arr[9] = {5, 6, 7, 8, 0, 1, 2, 3, 4};
+  // A reversed Sorted array with duplicate elements
+  int arr[7] = {3, 1, 2, 3, 3, 3, 3};
   int k;
   std::cin >> k;
 
-  int value = ReverseSorted(arr, 9, k);
+  int value = ReverseSorted(arr, 7, k);
   std::cout << "The target element is present at the index " << value << std::endl;
 }
