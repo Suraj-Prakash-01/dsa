@@ -1,25 +1,30 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
+using std::cin;
+using std::cout;
+
+void sel_sort(int arr[], int n)
+{
+  for (int i = 0; i < n - 1; i++)
+  {
+    int minIndex = i;
+
+    for (int j = i + 1; j < n; j++)
+    {
+      if (arr[j] < arr[minIndex])
+        minIndex = j;
+    }
+    if (minIndex != i)
+      std::swap(arr[i], arr[minIndex]);
+  }
+}
 
 int main()
 {
-  // Get the vector
-  vector<int> a = {1, 45, 54, 71, 76, 12};
-
-  // Print the vector
-  cout << "Vector: ";
-  for (int i = 0; i < a.size(); i++)
-    cout << a[i] << " ";
-  cout << endl;
-
-  // Sort the vector in descending order
-  sort(a.begin(), a.end(), greater<int>());
-
-  // Print the reversed vector
-  cout << "Sorted Vector in descending order:\n";
-  for (int i = 0; i < a.size(); i++)
-    cout << a[i] << " ";
-  cout << endl;
-
-  return 0;
+  int arr[] = {5, 2, 8, 1, 9};
+  int n = sizeof(arr) / sizeof(arr[0]);
+  sel_sort(arr, n);
+  cout << "The sorted array is ";
+  for (int i = 0; i < n; i++)
+    cout << arr[i] << " ";
+  cout << std::endl;
 }

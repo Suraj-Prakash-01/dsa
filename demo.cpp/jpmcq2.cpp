@@ -13,8 +13,11 @@ void sel_sort(int arr[], int n)
       if (arr[j] < arr[minIndex])
         minIndex = j;
     }
+
     if (minIndex != i)
-      std::swap(arr[i], arr[minIndex]);
+    {
+      std::swap(arr[minIndex], arr[i]);
+    }
   }
 }
 
