@@ -2,19 +2,17 @@
 using std::cin;
 using std::cout;
 
-void sel_sort(int arr[], int n)
+void bubble_sort(int arr[], int n)
 {
-  for (int i = 0; i < n - 1; i++)
+  for (int i = 1; i < n; i++)
   {
-    int minIndex = i;
+    // For round 1 ot n-1
 
-    for (int j = i + 1; j < n; j++)
+    for (int j = 0; j < n - i; j++)
     {
-      if (arr[j] < arr[minIndex])
-        minIndex = j;
+      if (arr[j] > arr[j + 1])
+        std::swap(arr[j], arr[j + 1]);
     }
-    if (minIndex != i)
-      std::swap(arr[i], arr[minIndex]);
   }
 }
 
@@ -22,7 +20,7 @@ int main()
 {
   int arr[] = {5, 2, 8, 1, 9};
   int n = sizeof(arr) / sizeof(arr[0]);
-  sel_sort(arr, n);
+  bubble_sort(arr, n);
   cout << "The sorted array is ";
   for (int i = 0; i < n; i++)
     cout << arr[i] << " ";
