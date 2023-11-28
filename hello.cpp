@@ -1,43 +1,54 @@
-// One approach for sorting array in descending order
-
-// #include <bits/stdc++.h>
-// using namespace std;
-
-// int main()
-// {
-//   // Get the vector
-//   vector<int> a = {1, 45, 54, 71, 76, 12};
-
-//   // Print the vector
-//   cout << "Vector: ";
-//   for (int i = 0; i < a.size(); i++)
-//     cout << a[i] << " ";
-//   cout << endl;
-
-//   // Sort the vector in descending order
-//   sort(a.begin(), a.end(), greater<int>());
-
-//   // Print the reversed vector
-//   cout << "Sorted Vector in descending order:\n";
-//   for (int i = 0; i < a.size(); i++)
-//     cout << a[i] << " ";
-//   cout << endl;
-
-//   return 0;
-// }
-
-// Another approach to sort array in descending array
 #include <iostream>
-#include <vector>
-#include <algorithm>
+using std::cout;
+void merge(int arr1[], int m, int arr2[], int n, int arr3[])
+{
+  int i = 0, j = 0;
+  int k = 0;
+
+  // To compare and input values from
+  // both arrays into third array
+  while (i < m && j < n)
+  {
+    if (arr1[i] < arr2[j])
+    {
+      arr3[k++] = arr1[i++];
+    }
+    else
+    {
+      arr3[k++] = arr2[j++];
+    }
+  }
+
+  // Copying remaining element from First array
+  while (i < m)
+  {
+    arr3[k++] = arr1[i++];
+  }
+
+  // Copying remaining element from Second array
+  while (j < n)
+  {
+    arr3[k++] = arr2[j++];
+  }
+}
+
+// To print the array
+void print(int ans[], int n)
+{
+  for (int i = 0; i < n; i++)
+  {
+    cout << ans[i] << " ";
+  }
+}
 
 int main()
 {
-  std::vector<int> arr = {2, 5, 3, 8, 6, 9, 1, 3, 6};
+  int arr1[5] = {1, 3, 5, 7, 9};
+  int arr2[3] = {2, 4, 6};
+  int arr3[8];
 
-  std::sort(arr.rbegin(), arr.rend());
-  for (int i = 0; i < arr.size(); i++)
-  {
-    std::cout << " " << arr[i];
-  }
+  merge(arr1, 5, arr2, 3, arr3);
+  print(arr3, 8);
+
+  return 0;
 }
