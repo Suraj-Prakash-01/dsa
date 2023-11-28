@@ -1,30 +1,54 @@
 #include <iostream>
-using std::cin;
+#include <vector>
 using std::cout;
+using std::vector;
 
-void sel_sort(int arr[], int n)
+// Function to reverse an array
+vector<int> reverse(vector<int> v)
 {
-  for (int i = 0; i < n - 1; i++)
-  {
-    int minIndex = i;
+  int s = 0;
+  int e = v.size() - 1;
 
-    for (int j = i + 1; j < n; j++)
-    {
-      if (arr[j] < arr[minIndex])
-        minIndex = j;
-    }
-    if (minIndex != i)
-      std::swap(arr[i], arr[minIndex]);
+  while (s <= e)
+  {
+    // Reversing opposite ends at the same time through swapping
+    std::swap(v[s], v[e]);
+    s++;
+    e--;
   }
+  return v;
+}
+
+void print(vector<int> v)
+{
+  for (int i = 0; i < v.size(); i++)
+  {
+    cout << v[i] << " ";
+  }
+  cout << std::endl;
 }
 
 int main()
 {
-  int arr[] = {5, 2, 8, 1, 9};
-  int n = sizeof(arr) / sizeof(arr[0]);
-  sel_sort(arr, n);
-  cout << "The sorted array is ";
-  for (int i = 0; i < n; i++)
-    cout << arr[i] << " ";
+  vector<int> v;
+
+  v.push_back(12);
+  v.push_back(5);
+  v.push_back(45);
+  v.push_back(78);
+  v.push_back(1);
+  v.push_back(94);
+
+  // Original array
+  for (int i = 0; i < v.size(); i++)
+  {
+    cout << v[i] << " ";
+  }
   cout << std::endl;
+
+  vector<int> ans = reverse(v);
+
+  // To get an reverse array
+  print(ans);
+  return 0;
 }
