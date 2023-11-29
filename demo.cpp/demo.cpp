@@ -1,30 +1,28 @@
 #include <iostream>
+#include <vector>
 using std::cin;
 using std::cout;
 
-void insertion_sort(int arr[], int n)
+vector<int> SumArray(vector<int> &a[], int n, vector<int> &b[], int m)
 {
-  // We started with i=1 bcz we considered
-  // First element as already sorted one
-  for (int i = 1; i < n; i++)
+  int ans[10];
+  int i = n - 1;
+  int j = m - 1;
+
+  int carry = 0;
+
+  while (i >= 0 && j >= 0)
   {
-    int temp = arr[i];
-    int j = i - 1;
-    for (; j >= 0; j--)
-    {
-      if (arr[j] > temp)
-      {
-        // Shift in position to make space for new element
-        arr[j + 1] = arr[j];
-      }
-      else
-      {
-        // In order to stop if the element doesn't need to be sorted
-        break;
-      }
-    }
-    // To input value at the space created
-    arr[j + 1] = temp;
+    int val1 = a[i];
+    int val2 = b[j];
+
+    int sum = val1 + val2 + carry;
+
+    carry = sum / 10;
+    sum = sum % 10;
+    ans.push_back(sum);
+    i--;
+    j--;
   }
 }
 
