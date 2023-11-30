@@ -2,6 +2,13 @@
 using std::cin;
 using std::cout;
 
+void reverse(char *arr, int n)
+{
+  int s = 0, e = n - 1;
+  while (s <= e)
+    std::swap(arr[s++], arr[e--]);
+}
+
 int getLength(char arr[])
 {
   int count = 0;
@@ -18,5 +25,9 @@ int main()
   // cin doesn't read words after space,enter or tab
   cin >> arr;
   cout << "Your name is " << arr << std::endl;
-  cout << "Number of characters in your name is " << getLength(arr);
+  int n = getLength(arr);
+  cout << "Number of characters in your name is " << n;
+  // Calling funtion to reverse the array
+  reverse(arr, n);
+  cout << "The reverse string is " << arr;
 }
