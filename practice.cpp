@@ -2,6 +2,23 @@
 using std::cin;
 using std::cout;
 
+bool checkPalindrome(char arr[], int n)
+{
+  int s = 0;
+  int e = n - 1;
+  while (s < e)
+  {
+    if (arr[s] != arr[e])
+      return false;
+    else
+    {
+      s++;
+      e--;
+    }
+  }
+  return true;
+}
+
 void reverse(char *arr, int n)
 {
   int s = 0, e = n - 1;
@@ -29,5 +46,8 @@ int main()
   cout << "Number of characters in your name is " << n;
   // Calling funtion to reverse the array
   reverse(arr, n);
-  cout << "The reverse string is " << arr;
+  cout << "\nThe reverse string is " << arr;
+
+  // To check whether the string is palindrome or not
+  cout << "\nCheck palindrome or not :" << checkPalindrome(arr, n) << std::endl;
 }
