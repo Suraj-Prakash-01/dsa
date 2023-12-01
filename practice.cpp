@@ -1,53 +1,52 @@
 #include <iostream>
+#include <string>
 using std::cin;
 using std::cout;
 
-bool checkPalindrome(char arr[], int n)
+char getMaxOccChar(std::string s)
 {
-  int s = 0;
-  int e = n - 1;
-  while (s < e)
+  int arr[26] = {0};
+
+  // Creating an array of count of characters
+  for (int i = 0; i < s.length(); i++)
   {
-    if (arr[s] != arr[e])
-      return false;
-    else
+    char ch = s[i];
+
+    // If character is lowercase
+    if (islower(ch))
     {
-      s++;
-      e--;
+      int num = ch - 'a';
+      arr[num]++;
+    }
+
+    // If character is uppercase
+    else if (isupper(ch))
+    {
+      int num = ch - 'A';
+      arr[num]++;
     }
   }
-  return true;
-}
 
-void reverse(char *arr, int n)
-{
-  int s = 0, e = n - 1;
-  while (s <= e)
-    std::swap(arr[s++], arr[e--]);
-}
+  // Finding max occurrence character
+  int maxi = -1, ans = 0;
+  for (int i = 0; i < 26; i++)
+  {
+    if (maxi < arr[i])
+    {
+      ans = i;
+      maxi = arr[i];
+    }
+  }
 
-int getLength(char arr[])
-{
-  int count = 0;
-  // This counts total number of iterations
-  for (int i = 0; arr[i] != '\0'; i++)
-    count++;
-  return count;
+  char finalAns = 'a' + ans;
+  return finalAns;
 }
 
 int main()
 {
-  char arr[100];
-  cout << "Enter your name :";
-  // cin doesn't read words after space,enter or tab
-  cin >> arr;
-  cout << "Your name is " << arr << std::endl;
-  int n = getLength(arr);
-  cout << "Number of characters in your name is " << n;
-  // Calling funtion to reverse the array
-  reverse(arr, n);
-  cout << "\nThe reverse string is " << arr;
+  std::string s;
+  cout << "Enter a string :" << std::endl;
+  cin >> s;
 
-  // To check whether the string is palindrome or not
-  cout << "\nCheck palindrome or not :" << checkPalindrome(arr, n) << std::endl;
+  cout << "Maximum occuring character is :" << getMaxOccChar(s) << std::endl;
 }
