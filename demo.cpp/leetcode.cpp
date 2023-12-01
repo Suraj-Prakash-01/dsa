@@ -3,24 +3,22 @@
 using std::cin;
 using std::cout;
 
-std::string replaceSpaces(std::string str)
+std::string removeOccurrences(std::string s, std::string part)
 {
-  std::string temp = "";
-  for (int i = 0; i < str.length(); i++)
+  while (s.size() != 0 && s.find(part) < s.length())
   {
-    // If the character is a space
-    if (str[i] == ' ')
-    {
-      temp.push_back('@');
-      temp.push_back('4');
-      temp.push_back('0');
-    }
-
-    // If character is not a space
-    else
-    {
-      temp.push_back(str[i]);
-    }
+    s.erase(s.find(part), part.length());
   }
-  return temp;
+  return s;
+}
+
+int main()
+{
+  std::string s, part;
+  cout << "Enter a string : ";
+  cin >> s;
+  cout << "Enter part of that string : ";
+  cin >> part;
+
+  cout << "The new string without part is :" << removeOccurrences(s, part) << std::endl;
 }
