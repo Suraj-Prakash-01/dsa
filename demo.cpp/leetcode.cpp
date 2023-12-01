@@ -1,54 +1,26 @@
 #include <iostream>
-#include <vector>
+#include <string>
+using std::cin;
 using std::cout;
-using std::vector;
 
-// Function to reverse an array
-vector<int> reverse(vector<int> v)
+std::string replaceSpaces(std::string str)
 {
-  int s = 0;
-  int e = v.size() - 1;
-
-  while (s <= e)
+  std::string temp = "";
+  for (int i = 0; i < str.length(); i++)
   {
-    // Reversing opposite ends at the same time through swapping
-    std::swap(v[s], v[e]);
-    s++;
-    e--;
+    // If the character is a space
+    if (str[i] == ' ')
+    {
+      temp.push_back('@');
+      temp.push_back('4');
+      temp.push_back('0');
+    }
+
+    // If character is not a space
+    else
+    {
+      temp.push_back(str[i]);
+    }
   }
-  return v;
-}
-
-void print(vector<int> v)
-{
-  for (int i = 0; i < v.size(); i++)
-  {
-    cout << v[i] << " ";
-  }
-  cout << std::endl;
-}
-
-int main()
-{
-  vector<int> v;
-
-  v.push_back(12);
-  v.push_back(5);
-  v.push_back(45);
-  v.push_back(78);
-  v.push_back(1);
-  v.push_back(94);
-
-  // Original array
-  for (int i = 0; i < v.size(); i++)
-  {
-    cout << v[i] << " ";
-  }
-  cout << std::endl;
-
-  vector<int> ans = reverse(v);
-
-  // To get an reverse array
-  print(ans);
-  return 0;
+  return temp;
 }
