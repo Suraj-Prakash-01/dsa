@@ -4,6 +4,7 @@ public:
   int countPrimes(int n)
   {
     int cnt = 0;
+
     // To create an array with all element as true
     vector<bool> prime(n + 1, true);
 
