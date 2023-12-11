@@ -1,24 +1,22 @@
 #include <iostream>
+#include <string>
 using std::cin;
 using std::cout;
 
 int main()
 {
-  int arr[5];
-  for (int i = 0; i < 5; i++)
-  {
-    cin >> arr[i];
-  }
+  std::string s;
+  cin >> s;
 
   // Precompute
-  int hash[15] = {0};
-  for (int i = 0; i < 5; i++)
+  int hash[26] = {0};
+  for (int i = 0; i < s.size(); i++)
   {
-    hash[arr[i]] += 1;
+    hash[s[i] - 'a'] += 1;
   }
 
   // Displaying hash
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < 26; i++)
   {
     cout << hash[i] << " ";
   }
@@ -30,10 +28,10 @@ int main()
   // No. of queries
   while (q--)
   {
-    int number;
-    cin >> number;
+    char c;
+    cin >> c;
     // Fetch
-    cout << hash[number] << std::endl;
+    cout << hash[c - 'a'] << std::endl;
   }
   return 0;
 }
