@@ -17,6 +17,11 @@ int main()
   for (int i = 0; i < 10; i++)
     mpp[arr[i]]++;
 
+  for (auto it : mpp)
+  {
+    cout << "Number " << it.first << " appears " << it.second << " times.\n";
+  }
+
   int q;
   cout << "Enter number of queries" << std::endl;
   cin >> q;
