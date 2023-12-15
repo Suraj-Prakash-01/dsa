@@ -1,28 +1,33 @@
 #include <iostream>
+#include <vector>
 using std::cin;
 using std::cout;
 
-int main()
+int waveprint(std::vector<int> arr, int nRow, int nCol)
 {
-  int arr[3][4];
+  std::vector<int> ans;
 
-  cout << "Enter the elements :" << std::endl;
-  // For taking input in 2-D array
-  for (int i = 0; i < 3; i++)
+  for (int col = 0; col <= nCol; col++)
   {
-    for (int j = 0; j < 4; j++)
+
+    if (col & 1)
     {
-      cin >> arr[i][j];
+      // Odd Index -> Bottom to top
+
+      for (int row = nRow - 1; row >= 0; row--)
+      {
+        ans.push_back(arr[row][col]);
+      }
+    }
+
+    else
+    {
+      // 0 or Even Index -> Top to bottom
+      for (int row = 0; row < nRow; row++)
+      {
+        ans.push_back(arr[row][col]);
+      }
     }
   }
-
-  // For printing 2-D array
-  for (int i = 0; i < 3; i++)
-  {
-    for (int j = 0; j < 4; j++)
-    {
-      cout << arr[i][j] << " ";
-    }
-    cout << std::endl;
-  }
+  return ans;
 }
