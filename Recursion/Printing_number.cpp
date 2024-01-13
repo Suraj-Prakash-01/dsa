@@ -8,8 +8,9 @@ void print(int n)
   if (n == 0)
     return;
 
-  cout << n << std::endl;
+  // Recusive Relation
   print(n - 1);
+  cout << n << std::endl;
 }
 
 int main()
