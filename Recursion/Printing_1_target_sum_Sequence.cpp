@@ -3,10 +3,12 @@
 using std::cin;
 using std::cout;
 
+// Adding a bool operator will limit the output to just one output
 bool printS(int i, std::vector<int> &ans, int s, int sum, int arr[], int n)
 {
   if (i == n) // Here i is index
   {
+    // Condition Satisfied
     if (s == sum) // Print only if the sum of subsequence is target sum
     {
       for (auto it : ans)
@@ -17,6 +19,7 @@ bool printS(int i, std::vector<int> &ans, int s, int sum, int arr[], int n)
       return true;
     }
     // Return the answer after every potential sum it finds
+    // Condition not satisfied
     return false;
   }
 
@@ -24,12 +27,16 @@ bool printS(int i, std::vector<int> &ans, int s, int sum, int arr[], int n)
   ans.push_back(arr[i]);
   s += arr[i];
   // Take or Pick condition
-  printS(i + 1, ans, s, sum, arr, n);
+  if (printS(i + 1, ans, s, sum, arr, n) == true)
+    return true;
 
   s -= arr[i];
   ans.pop_back();
   // Not pick Condition
-  printS(i + 1, ans, s, sum, arr, n);
+  if (printS(i + 1, ans, s, sum, arr, n) == true)
+    return true;
+
+  return false;
 }
 
 int main()
