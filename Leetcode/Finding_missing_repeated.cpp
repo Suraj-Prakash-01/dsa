@@ -1,3 +1,4 @@
+/* The Solution class provides a method to find the missing and repeated values in a given grid. */
 class Solution
 {
 public:
