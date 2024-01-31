@@ -1,0 +1,26 @@
+class Solution
+{
+public:
+  vector<int> majorityElement(vector<int> &nums)
+  {
+    int n = nums.size();
+    int count = n / 3;
+    vector<pair<int, int>> vp; // Initializing pair
+    vector<int> v;
+    map<int, int> mp; // Initializing maps
+    for (int i = 0; i < n; i++)
+    {
+      mp[nums[i]]++; // Saving frequency in maps
+    }
+    for (auto x : mp)
+    {
+      vp.push_back(make_pair(x.second, x.first)); // Saving map details in pair
+    }
+    for (int i = 0; i < vp.size(); i++)
+    {
+      if (vp[i].first > count)     // Checking majority elements
+        v.push_back(vp[i].second); // Pushing majority element in vector array
+    }
+    return v;
+  }
+};
