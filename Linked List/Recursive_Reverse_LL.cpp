@@ -32,6 +32,53 @@ public:
   }
 };
 
+/* ---------- Approach 1 ----------*/
+
+/*void reverse(Node *head, Node *curr, Node *prev)
+{
+  // Base Condition
+  if (curr == NULL)
+  {
+    head = prev;
+    return;
+  }
+
+  Node *forward = curr->next;
+  reverse(head, forward, curr);
+  curr->next = prev;
+}
+*/
+
+/* ---------- Apporach 2 ---------- */
+
+/*Node *reverse(Node *head)
+{
+  // Base Case
+  if (head == NULL || head->next == NULL)
+    return head;
+
+  Node *newHead = reverse(head->next);
+  Node *front = head->next;
+  front->next = head;
+  head->next = NULL;
+  return newHead;
+}
+*/
+
+/* ---------- Approach 3 ---------- */
+
+Node *reverse(Node *head)
+{
+  // Base Case
+  if (head == NULL || head->next == NULL)
+    return head;
+
+  Node *chotaHead = reverse(head->next);
+  head->next->next = head;
+  head->next = NULL;
+  return chotaHead;
+}
+
 // Function to print the linked list
 void printLinkedList(Node *head)
 {
@@ -49,16 +96,21 @@ int main()
   // Create a linked list with
   // values 1, 3, 2, and 4
   Node *head = new Node(1);
-  head->next = new Node(3);
-  head->next->next = new Node(2);
+  head->next = new Node(2);
+  head->next->next = new Node(3);
   head->next->next->next = new Node(4);
 
   // Print the original linked list
   cout << "Original Linked List: ";
   printLinkedList(head);
 
-  // Reverse the linked list
-  head = reverseLinkedList(head);
+  // Reverse the linked list for approach 1
+  // Node *curr = head;
+  // Node *prev = NULL;
+  // reverse(head, curr, prev);
+  // return head;
+
+  head = reverse(head);
 
   // Print the reversed linked list
   cout << "Reversed Linked List: ";

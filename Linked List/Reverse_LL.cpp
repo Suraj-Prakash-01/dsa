@@ -38,6 +38,7 @@ Node *reverse(Node *head)
   Node *prev = NULL;
   Node *curr = head;
 
+  // It's like swapping position and updating at the same time
   while (curr != NULL)
   {
     forward = curr->next;
