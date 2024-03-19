@@ -1,10 +1,10 @@
 // Floyd's Loop Detection Algorithm
-bool floydDetectionLoop(Node *head)
+Node *floydDetectionLoop(Node *head)
 {
 
   // Edge Case
   if (head == NULL)
-    return false;
+    return NULL;
 
   Node *fast = head;
   Node *slow = head;
@@ -23,9 +23,9 @@ bool floydDetectionLoop(Node *head)
 
     // They will eventually meet if they are in a loop
     if (slow == fast)
-      return 1;
+      return slow;
   }
-  return 0;
+  return NULL;
 }
 
 // Function to find the meeting point
