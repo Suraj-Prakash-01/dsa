@@ -1,87 +1,9 @@
-/* ---------- Approack 1 ----------*/
-
-#include <bits/stdc++.h>
-#include <stack>
-
-vector<int> nextSmallerElement(vector<int> &arr, int n)
-{
-  stack<int> st;
-  st.push(-1);
-  vector<int> ans(n);
-
-  // Treaverses in reverse
-  for (int i = n - 1; i >= 0; i--)
-  {
-    int num = arr[i];
-
-    // Popping until we find the element smaller than the current element
-    // arr[st.top()] retrieves the value of the element at the index equal to the top element of the stack
-    while (st.top() != -1 && arr[st.top()] >= num)
-      st.pop();
-
-    // it stores the index of next smaller elements
-    ans[i] = st.top();
-    // Pushing the index into the stack
-    st.push(i);
-  }
-  return ans;
-}
-
-vector<int> prevSmallerElement(vector<int> &arr, int n)
-{
-  stack<int> st;
-  st.push(-1);
-  vector<int> ans(n);
-
-  // We just changes the loop condition for finding the previous smaller element
-  for (int i = 0; i < n; i++)
-  {
-    int num = arr[i];
-
-    while (st.top() != -1 && arr[st.top()] >= num)
-      st.pop();
-
-    // Ans is the top element of the stack
-    ans[i] = st.top();
-    st.push(i);
-  }
-  return ans;
-}
-
-int largestRectangle(vector<int> &heights)
-{
-  int n = heights.size();
-
-  // Storing next smaller elemnet indexes
-  vector<int> next(n);
-  next = nextSmallerElement(heights, n);
-
-  // Storing previous smaller indexes
-  vector<int> prev(n);
-  prev = prevSmallerElement(heights, n);
-
-  int area = INT_MIN;
-
-  for (int i = 0; i < n; i++)
-  {
-    int l = heights[i];
-
-    // If the next greater element is beyond last element, then changing it to n
-    if (next[i] == -1)
-      next[i] = n;
-
-    // Formula for finding width of the rectangles
-    int b = next[i] - prev[i] - 1;
-
-    int newArea = l * b;
-    // Comparing the new area with the previously stored areas
-    area = max(area, newArea);
-  }
-  // Returning the greatest area
-  return area;
-}
-
-/* ---------- Apporach 2 ----------*/
+/* The concept behind this solution is that we create a vector of each row and treat it as a vector array for histogram
+  Then we find the maximum area in that histogram and after that we add the previous array to the next row accordingly
+  and update the  vector array and then again find it's maximum area
+  And lastly compare the new Area with the previous and update the maximum area out of those two
+  After the final loop ends, we get the maximum area in the matrix
+*/
 
 vector<int> nearestSmallestToLeft(vector<int> &arr, int n)
 {
@@ -166,13 +88,13 @@ int largestRectangle(vector<int> &arr, int n)
 {
 
   // Storing left and right arrays
-  vector<int> left, right;
+  vector<int> left, right, width(n);
 
   // Finding left and right array which hold indexes of nearest smallest to left and right respectively
   left = nearestSmallestToLeft(arr, n);
   right = nearestSmallestToRight(arr, n);
 
-  // Initialising area to INT_MIN to compare with later on
+  // Initialising area to INT_MIN to compare later
   int area = INT_MIN;
 
   for (int i = 0; i < n; i++)
@@ -189,5 +111,34 @@ int largestRectangle(vector<int> &arr, int n)
     area = max(area, newArea);
   }
   // Returning the greatest area
+  return area;
+}
+
+int maximalRectangle(vector<vector<int>> &matrix)
+{
+  // Finding rows and columns of the matrix
+  int m = matrix.size();
+  int n = matrix[0].size();
+
+  // Assigning area to INT_MIN to compare later
+  int area = INT_MIN;
+  vector<int> ans(n);
+
+  // Traversing in order to form histogram like structure from the matrix
+  for (int i = 0; i < m; i++)
+  {
+    // This loop will help to form the histogram by converting 2-D matrix to 1-D array
+    for (j = 0; j < n; j++)
+    {
+      // Making sure that we don't count those bars which have base as 0, it will be like floating bar
+      if (matrix[i][j] == 0)
+        ans[j] = 0;
+      // Adding value to previous vector to make it a histogram
+      else
+        ans[j] = ans[j] + matrix[i][j];
+    }
+    // Comparing and updating largest area my finding largest area formed by that histogram up until that moment
+    area = max(area, largestRectangle(ans, n));
+  }
   return area;
 }
