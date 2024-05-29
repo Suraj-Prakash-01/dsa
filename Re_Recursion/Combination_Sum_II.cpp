@@ -13,6 +13,7 @@ void combination_Sum(int ind, std::vector<int> &arr, std::vector<int> &ds, std::
     return;
   }
 
+  // i is starting with ind means every element can be the starting point of the subsequence
   for (int i = ind; i < arr.size(); i++)
   {
     // To avoid duplication
