@@ -48,8 +48,9 @@ int maximum_path_sum(Node *root, int &maxi)
     return 0;
 
   // Traversing left and right side of the tree
-  int left = maximum_path_sum(root->left, maxi);
-  int right = maximum_path_sum(root->right, maxi);
+  // We are introducing max value in this so that we can avoid any negative numbers
+  int left = std::max(0, maximum_path_sum(root->left, maxi));
+  int right = std::max(0, maximum_path_sum(root->right, maxi));
 
   // Updating maxi after getting left and right element
   maxi = std::max(maxi, left + right + root->data);
