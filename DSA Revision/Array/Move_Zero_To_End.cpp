@@ -34,3 +34,7 @@ public:
 //         }
 //     }
 // };
+
+// Solution 3 -- Using Extra space
+
+// temp array with initial value as 0 and changes by iterating the original array
