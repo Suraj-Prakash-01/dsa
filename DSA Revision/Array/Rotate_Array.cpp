@@ -11,3 +11,5 @@ public:
     reverse(nums.begin() + k, nums.end());   // Reversing the last k elements
   }
 };
+
+// Second Approach could be using extra space
